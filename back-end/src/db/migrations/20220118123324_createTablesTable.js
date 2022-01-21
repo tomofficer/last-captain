@@ -5,7 +5,6 @@ exports.up = function (knex) {
     table.integer('capacity').notNullable();
     table.string('status');
 
-    // let's make a foreign key here:
     table.integer('reservation_id').unsigned();
     table
       .foreign('reservation_id')
@@ -20,3 +19,4 @@ exports.up = function (knex) {
 exports.down = function (knex) {
   return knex.schema.dropTable('tables');
 };
+
