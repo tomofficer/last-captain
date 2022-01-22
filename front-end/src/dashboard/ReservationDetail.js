@@ -6,10 +6,12 @@ import { updateReservationStatus } from "../utils/api";
 function ReservationDetail({ reservation }) {
   const history = useHistory();
 
+  //state variables
   const [currentReservation, setCurrentReservation] = useState(reservation);
   const [showSeat, setShowSeat] = useState(false);
   const [error, setError] = useState(null);
 
+  //useEffect section
   useEffect(() => {
     if (
       currentReservation.status === "booked" ||
@@ -19,6 +21,7 @@ function ReservationDetail({ reservation }) {
     }
   }, [currentReservation]);
 
+  //event handlers
   const handleSeat = (e) => {
     e.preventDefault();
     setError(null);
