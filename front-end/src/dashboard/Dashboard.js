@@ -9,11 +9,13 @@ import TableDetail from "./TableDetail";
 function Dashboard() {
   const date = today();
 
+  //state variables
   const [reservations, setReservations] = useState(null);
   const [tables, setTables] = useState(null);
   const [viewDate, setViewDate] = useState(date);
   const [error, setError] = useState(null);
 
+  //useEffect section
   useEffect(() => {
     const abortController = new AbortController();
     setError(null);
@@ -45,19 +47,22 @@ function Dashboard() {
     }
   }, [searchedDate]);
 
+  //event handlers
   const handlePreviousDay = (e) => {
     e.preventDefault();
     setViewDate(previous(viewDate));
   };
+  
   const handleNextDay = (e) => {
     e.preventDefault();
     setViewDate(next(viewDate));
   };
+  
   const handleTodayDay = (e) => {
     e.preventDefault();
     setViewDate(date);
   };
-
+ 
   if (reservations) {
     return (
       <main>
